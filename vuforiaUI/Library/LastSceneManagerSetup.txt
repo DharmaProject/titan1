@@ -1,0 +1,4 @@
+sceneSetups:
+- path: Assets/dharma.unity
+  isLoaded: 1
+  isActive: 1

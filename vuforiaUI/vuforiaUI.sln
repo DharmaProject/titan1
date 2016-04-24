@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2015
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "vuforiaUI.CSharp", "vuforiaUI.CSharp.csproj", "{33616635-A834-37CB-AC9B-F22285A649FD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "vuforiaUI.CSharp.Editor", "vuforiaUI.CSharp.Editor.csproj", "{7BD5AD36-B636-DE51-2C54-BED4746D05A0}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{33616635-A834-37CB-AC9B-F22285A649FD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{33616635-A834-37CB-AC9B-F22285A649FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{33616635-A834-37CB-AC9B-F22285A649FD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{33616635-A834-37CB-AC9B-F22285A649FD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7BD5AD36-B636-DE51-2C54-BED4746D05A0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7BD5AD36-B636-DE51-2C54-BED4746D05A0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7BD5AD36-B636-DE51-2C54-BED4746D05A0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7BD5AD36-B636-DE51-2C54-BED4746D05A0}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
