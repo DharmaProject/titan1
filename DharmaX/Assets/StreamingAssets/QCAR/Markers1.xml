@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<QCARConfig xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="qcar_config.xsd">
-  <Tracking>
-    <ImageTarget name="download" size="30.000000 21.044777" />
-    <ImageTarget name="armarker" size="30.000000 30.000000" />
-    <ImageTarget name="rocket_marker" size="30.000000 30.000000" />
-  </Tracking>
-</QCARConfig>
