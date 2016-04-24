@@ -7,14 +7,13 @@ using Vuforia;
 
 public class DharmaTest : MonoBehaviour {
 
-    SerialPort miPuerto = new SerialPort("COM5", 115200);
+    SerialPort miPuerto = new SerialPort("COM8", 115200);
     string[] vals;
-    float angulo;
-    float magnetismo;
-    float respiracion;
-    float anguloMap;
+    int Temperatura;
+    int Litros;
+    int anguloMap;
     string dharma;
-    public Transform text;
+    //public Transform text;
     public Transform text2;
     public Transform text3;
     public Transform text4;
@@ -32,16 +31,14 @@ public class DharmaTest : MonoBehaviour {
 
         string valores = miPuerto.ReadLine();
         vals = valores.Split(',');
-        angulo = float.Parse(vals[2]);
-        magnetismo = float.Parse(vals[0]);
-        respiracion = float.Parse(vals[1]);
-        print(vals[2]);
-        anguloMap = Map(angulo, 0, 1023, 0, 180);
-        anguloMap = Mathf.Round(anguloMap);
-        magnetismo = Mathf.Round(magnetismo);
-        text.GetComponent<TextMesh>().text = "Temperatura: " + anguloMap.ToString();
-        text2.GetComponent<TextMesh>().text = "Magnetismo: " + magnetismo.ToString();
-        text3.GetComponent<TextMesh>().text = "Respiracion: " + respiracion.ToString();
+        Litros = int.Parse(vals[1]);
+        Temperatura = int.Parse(vals[0]);
+        
+        //Temperatura = Mathf.Round(Temperatura);
+        //Litros = Mathf.Round(Litros);
+        //text.GetComponent<TextMesh>().text = "Temperatura: " + anguloMap.ToString();
+        text2.GetComponent<TextMesh>().text = "Litros: " + Litros.ToString();
+        text3.GetComponent<TextMesh>().text = "Temperatura: " + Temperatura.ToString();
         text4.GetComponent<TextMesh>().text = "DHARMA";
 
     
