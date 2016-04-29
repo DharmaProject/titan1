@@ -15,5 +15,6 @@ namespace Vuforia
     /// </summary>
     public class ImageTargetBehaviour : ImageTargetAbstractBehaviour
     {
+        
     }
 }

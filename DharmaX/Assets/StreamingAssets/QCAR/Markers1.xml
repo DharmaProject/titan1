@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <QCARConfig xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="qcar_config.xsd">
   <Tracking>
+    <ImageTarget name="hackaday" size="30.000000 25.005108" />
     <ImageTarget name="images2" size="30.000000 30.000000" />
     <ImageTarget name="rayo" size="30.000000 30.000000" />
     <ImageTarget name="Mira" size="30.000000 30.000000" />
