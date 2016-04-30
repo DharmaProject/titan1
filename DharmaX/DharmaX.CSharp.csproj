@@ -70,6 +70,17 @@
     <Compile Include="Assets\Earth\Scripts\EarthScript.cs" />
     <Compile Include="Assets\Earth\Scripts\MoveScript.cs" />
     <Compile Include="Assets\Earth\Scripts\SphereScript.cs" />
+    <Compile Include="Assets\Resources\Holographic\Scripts\PanWM.cs" />
+    <Compile Include="Assets\Resources\Holographic\Scripts\aim_movement.cs" />
+    <Compile Include="Assets\Resources\Holographic\Scripts\armor.cs" />
+    <Compile Include="Assets\Resources\Holographic\Scripts\bullets.cs" />
+    <Compile Include="Assets\Resources\Holographic\Scripts\grid.cs" />
+    <Compile Include="Assets\Resources\Holographic\Scripts\health.cs" />
+    <Compile Include="Assets\Resources\Holographic\Scripts\pulse.cs" />
+    <Compile Include="Assets\Resources\Holographic\Scripts\pulse_rotation.cs" />
+    <Compile Include="Assets\Resources\Holographic\Scripts\roboGui.cs" />
+    <Compile Include="Assets\Resources\Holographic\Scripts\sliders.cs" />
+    <Compile Include="Assets\Resources\Holographic\Scripts\transparency.cs" />
     <Compile Include="Assets\Scripts\ActiveStateToggler.cs" />
     <Compile Include="Assets\Scripts\ApplicationManager.cs" />
     <Compile Include="Assets\Scripts\ChangeColor.cs" />
@@ -129,6 +140,8 @@
     <None Include="Assets\Fonts\Jupiter\LICENSE.txt" />
     <None Include="Assets\Materials\UI-Default-No-Alpha.shader" />
     <None Include="Assets\Plugins\Android\AndroidManifest.xml" />
+    <None Include="Assets\Resources\Holographic\Scripts\unlitAlpha.shader" />
+    <None Include="Assets\Resources\Readme.txt" />
     <None Include="Assets\StreamingAssets\QCAR\Markers1.xml" />
     <None Include="Assets\Textures and Sprites\SF UI\Background\LICENSE.txt" />
     <None Include="Assets\Vuforia\Editor\Scripts\Vuforia.UnityExtensions.Editor.XML" />
