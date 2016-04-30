@@ -1,0 +1,133 @@
+Base path: C:/Program Files/Unity/Editor/Data
+Cmd: getPlatforms
+Cmd: disassembleShader
+  api=15 insize=2125 outsize=3609 ok=1
+Cmd: compileSnippet
+  api=1 type=0 insize=6658 outsize=1900 kw=DIRECTIONAL LIGHTMAP_OFF DIRLIGHTMAP_OFF DYNAMICLIGHTMAP_OFF VERTEXLIGHT_ON pd=UNITY_ENABLE_REFLECTION_BUFFERS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING ok=1
+Cmd: disassembleShader
+  api=9 insize=1900 outsize=3173 ok=1
+Cmd: compileSnippet
+  api=4 type=0 insize=6658 outsize=2841 kw=DIRECTIONAL LIGHTMAP_OFF DIRLIGHTMAP_OFF DYNAMICLIGHTMAP_OFF VERTEXLIGHT_ON pd=UNITY_ENABLE_REFLECTION_BUFFERS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING ok=1
+Cmd: disassembleShader
+  api=15 insize=2841 outsize=4550 ok=1
+Cmd: disassembleShader
+  api=17 insize=641 outsize=1512 ok=1
+Cmd: compileSnippet
+  api=8 type=1 insize=6658 outsize=937 kw=DIRECTIONAL LIGHTMAP_OFF DIRLIGHTMAP_OFF DYNAMICLIGHTMAP_OFF pd=UNITY_NO_LINEAR_COLORSPACE UNITY_ENABLE_REFLECTION_BUFFERS UNITY_PBS_USE_BRDF3 ok=1
+Cmd: disassembleShader
+  api=14 insize=937 outsize=2588 ok=1
+Cmd: compileSnippet
+  api=4 type=0 insize=3591 outsize=1349 kw=POINT pd=UNITY_ENABLE_REFLECTION_BUFFERS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING ok=1
+Cmd: disassembleShader
+  api=15 insize=1349 outsize=2478 ok=1
+Cmd: compileSnippet
+  api=1 type=0 insize=3591 outsize=544 kw=DIRECTIONAL pd=UNITY_ENABLE_REFLECTION_BUFFERS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING ok=1
+Cmd: disassembleShader
+  api=9 insize=544 outsize=928 ok=1
+Cmd: disassembleShader
+  api=15 insize=1349 outsize=2476 ok=1
+Cmd: compileSnippet
+  api=8 type=0 insize=3591 outsize=1905 kw=DIRECTIONAL pd=UNITY_NO_LINEAR_COLORSPACE UNITY_ENABLE_REFLECTION_BUFFERS UNITY_PBS_USE_BRDF3 ok=1
+Cmd: disassembleShader
+  api=13 insize=1905 outsize=4061 ok=1
+Cmd: compileSnippet
+  api=8 type=0 insize=3591 outsize=1905 kw=SPOT pd=UNITY_NO_LINEAR_COLORSPACE UNITY_ENABLE_REFLECTION_BUFFERS UNITY_PBS_USE_BRDF3 ok=1
+Cmd: disassembleShader
+  api=13 insize=1905 outsize=4063 ok=1
+Cmd: compileSnippet
+  api=4 type=0 insize=3591 outsize=1349 kw=POINT_COOKIE pd=UNITY_ENABLE_REFLECTION_BUFFERS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING ok=1
+Cmd: disassembleShader
+  api=15 insize=1349 outsize=2478 ok=1
+Cmd: compileSnippet
+  api=1 type=0 insize=3591 outsize=544 kw=DIRECTIONAL_COOKIE pd=UNITY_ENABLE_REFLECTION_BUFFERS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING ok=1
+Cmd: disassembleShader
+  api=9 insize=544 outsize=928 ok=1
+Cmd: compileSnippet
+  api=8 type=0 insize=3591 outsize=1905 kw=DIRECTIONAL_COOKIE pd=UNITY_NO_LINEAR_COLORSPACE UNITY_ENABLE_REFLECTION_BUFFERS UNITY_PBS_USE_BRDF3 ok=1
+Cmd: disassembleShader
+  api=13 insize=1905 outsize=4063 ok=1
+Cmd: compileSnippet
+  api=4 type=1 insize=3591 outsize=953 kw=POINT pd=UNITY_ENABLE_REFLECTION_BUFFERS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING ok=1
+Cmd: disassembleShader
+  api=17 insize=953 outsize=1905 ok=1
+Cmd: compileSnippet
+  api=1 type=1 insize=3591 outsize=436 kw=DIRECTIONAL pd=UNITY_ENABLE_REFLECTION_BUFFERS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING ok=1
+Cmd: disassembleShader
+  api=11 insize=436 outsize=761 ok=1
+Cmd: disassembleShader
+  api=17 insize=569 outsize=1365 ok=1
+Cmd: compileSnippet
+  api=8 type=1 insize=3591 outsize=833 kw=DIRECTIONAL pd=UNITY_NO_LINEAR_COLORSPACE UNITY_ENABLE_REFLECTION_BUFFERS UNITY_PBS_USE_BRDF3 ok=1
+Cmd: disassembleShader
+  api=14 insize=833 outsize=2381 ok=1
+Cmd: compileSnippet
+  api=4 type=1 insize=3591 outsize=1197 kw=SPOT pd=UNITY_ENABLE_REFLECTION_BUFFERS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING ok=1
+Cmd: disassembleShader
+  api=17 insize=1197 outsize=2270 ok=1
+Cmd: compileSnippet
+  api=1 type=1 insize=3591 outsize=828 kw=POINT_COOKIE pd=UNITY_ENABLE_REFLECTION_BUFFERS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING ok=1
+Cmd: disassembleShader
+  api=11 insize=828 outsize=1290 ok=1
+Cmd: compileSnippet
+  api=4 type=1 insize=3591 outsize=1045 kw=POINT_COOKIE pd=UNITY_ENABLE_REFLECTION_BUFFERS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING ok=1
+Cmd: disassembleShader
+  api=17 insize=1045 outsize=2070 ok=1
+Cmd: compileSnippet
+  api=1 type=1 insize=3591 outsize=652 kw=DIRECTIONAL_COOKIE pd=UNITY_ENABLE_REFLECTION_BUFFERS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING ok=1
+Cmd: disassembleShader
+  api=11 insize=652 outsize=1068 ok=1
+Cmd: compileSnippet
+  api=8 type=1 insize=3591 outsize=1213 kw=DIRECTIONAL_COOKIE pd=UNITY_NO_LINEAR_COLORSPACE UNITY_ENABLE_REFLECTION_BUFFERS UNITY_PBS_USE_BRDF3 ok=1
+Cmd: disassembleShader
+  api=14 insize=1213 outsize=3053 ok=1
+Cmd: disassembleShader
+  api=15 insize=2125 outsize=3609 ok=1
+Cmd: disassembleShader
+  api=13 insize=2945 outsize=5812 ok=1
+Cmd: disassembleShader
+  api=9 insize=1900 outsize=3173 ok=1
+Cmd: disassembleShader
+  api=15 insize=2841 outsize=4550 ok=1
+Cmd: disassembleShader
+  api=13 insize=4113 outsize=7607 ok=1
+Cmd: disassembleShader
+  api=17 insize=641 outsize=1512 ok=1
+Cmd: disassembleShader
+  api=15 insize=1349 outsize=2478 ok=1
+Cmd: disassembleShader
+  api=13 insize=1905 outsize=4063 ok=1
+Cmd: disassembleShader
+  api=9 insize=544 outsize=928 ok=1
+Cmd: disassembleShader
+  api=13 insize=1905 outsize=4061 ok=1
+Cmd: disassembleShader
+  api=15 insize=1349 outsize=2478 ok=1
+Cmd: disassembleShader
+  api=13 insize=1905 outsize=4063 ok=1
+Cmd: disassembleShader
+  api=9 insize=544 outsize=928 ok=1
+Cmd: disassembleShader
+  api=13 insize=1905 outsize=4063 ok=1
+Cmd: disassembleShader
+  api=15 insize=1349 outsize=2478 ok=1
+Cmd: disassembleShader
+  api=13 insize=1905 outsize=4063 ok=1
+Cmd: disassembleShader
+  api=17 insize=953 outsize=1905 ok=1
+Cmd: disassembleShader
+  api=11 insize=436 outsize=761 ok=1
+Cmd: disassembleShader
+  api=17 insize=569 outsize=1365 ok=1
+Cmd: disassembleShader
+  api=11 insize=896 outsize=1411 ok=1
+Cmd: disassembleShader
+  api=14 insize=1737 outsize=3898 ok=1
+Cmd: disassembleShader
+  api=17 insize=1045 outsize=2070 ok=1
+Cmd: disassembleShader
+  api=11 insize=652 outsize=1068 ok=1
+Cmd: disassembleShader
+  api=14 insize=1213 outsize=3053 ok=1
+Unhandled exception: Protocol error - failed to read correct magic number
+
+Quitting shader compiler process

@@ -67,6 +67,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\DharmaTest.cs" />
+    <Compile Include="Assets\Earth\Scripts\EarthScript.cs" />
+    <Compile Include="Assets\Earth\Scripts\MoveScript.cs" />
+    <Compile Include="Assets\Earth\Scripts\SphereScript.cs" />
     <Compile Include="Assets\Scripts\ActiveStateToggler.cs" />
     <Compile Include="Assets\Scripts\ApplicationManager.cs" />
     <Compile Include="Assets\Scripts\ChangeColor.cs" />
@@ -121,6 +124,8 @@
     <Compile Include="Assets\titan1.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Assets\Earth\Materials\EarthShader.shader" />
+    <None Include="Assets\Earth\Readme.txt" />
     <None Include="Assets\Fonts\Jupiter\LICENSE.txt" />
     <None Include="Assets\Materials\UI-Default-No-Alpha.shader" />
     <None Include="Assets\Plugins\Android\AndroidManifest.xml" />

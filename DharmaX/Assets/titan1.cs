@@ -10,19 +10,21 @@ public class titan1 : MonoBehaviour {
     string[] botones;
     int[] valor;
     public GameObject[] boton;
+    public GameObject tierra;
     public Renderer[] color ;
     string dharma;
     //public Transform text;
-    public Transform text2;
-    public Transform text3;
-    public Transform text4;
+   
+    public Transform temperatura;
+    public Transform title;
+
 
 
     // Use this for initialization
     void Start()
     {
         miPuerto.Open();
-       
+        tierra.gameObject.SetActive(false);
         valor = new int[5];
 
 
@@ -39,28 +41,69 @@ public class titan1 : MonoBehaviour {
         for (int i = 0; i < botones.Length; i++)
         {
            valor[i] = int.Parse(botones[i].ToString());
-            Debug.Log(valor[0]);
-
+            Debug.Log(valor[4]);
+            
             if (valor[0] < 160)
             {
-                //Debug.Log(valor[i]);
-                switch (i)
-                {
-                    case 0:
-                        color[0].material.SetColor("_Color", Color.red);
-                        break;
-                }
-            } else
+                color[0].material.SetColor("_Color", Color.green);
+                color[1].material.SetColor("_Color", Color.white);
+                color[2].material.SetColor("_Color", Color.white);
+                color[3].material.SetColor("_Color", Color.white);
+                color[4].material.SetColor("_Color", Color.white);
+                tierra.gameObject.SetActive(true);
+                tierra.transform.Rotate(Vector3.up * Time.deltaTime);
+                tierra.transform.Rotate(Vector3.left * Time.deltaTime);
+                title.GetComponent<TextMesh>().text = "Space GPS";
+            } else if(valor[1]<160)
             {
+               color[1].material.SetColor("_Color", Color.green);
                 color[0].material.SetColor("_Color", Color.white);
+                color[2].material.SetColor("_Color", Color.white);
+                color[3].material.SetColor("_Color", Color.white);
+                color[4].material.SetColor("_Color", Color.white);
+                title.GetComponent<TextMesh>().text = "Mission Control";
             }
+              else if (valor[2] < 160)
+            {
+                color[1].material.SetColor("_Color", Color.white);
+                color[0].material.SetColor("_Color", Color.white);
+                color[2].material.SetColor("_Color", Color.green);
+                color[3].material.SetColor("_Color", Color.white);
+                color[4].material.SetColor("_Color", Color.white);
+                title.GetComponent<TextMesh>().text = "Arm Robot";
+            }
+              else if (valor[3] < 160)
+            {
+                color[1].material.SetColor("_Color", Color.white);
+                color[0].material.SetColor("_Color", Color.white);
+                color[2].material.SetColor("_Color", Color.white);
+                color[3].material.SetColor("_Color", Color.green);
+                color[4].material.SetColor("_Color", Color.white);
+                title.GetComponent<TextMesh>().text = "Compound Analyzer";
+            }
+            else if (valor[4] < 160)
+            {
+                color[1].material.SetColor("_Color", Color.white);
+                color[0].material.SetColor("_Color", Color.white);
+                color[2].material.SetColor("_Color", Color.white);
+                color[3].material.SetColor("_Color", Color.white);
+                color[4].material.SetColor("_Color", Color.green);
+                title.GetComponent<TextMesh>().text = "Music Player";
+            }
+            else 
+            {
+                color[1].material.SetColor("_Color", Color.white);
+                color[0].material.SetColor("_Color", Color.white);
+                color[2].material.SetColor("_Color", Color.white);
+                color[3].material.SetColor("_Color", Color.white);
+                color[4].material.SetColor("_Color", Color.white);
+                tierra.gameObject.SetActive(false);
+                title.GetComponent<TextMesh>().text = "Biometrics";
+                //temperatura.GetComponent<TextMesh>().text = "Temperatura: " + valor[6].ToString();
+            }
+
         }
-        //Temperatura = Mathf.Round(Temperatura);
-        //Litros = Mathf.Round(Litros);
-        //text.GetComponent<TextMesh>().text = "Temperatura: " + anguloMap.ToString();
-       /* text2.GetComponent<TextMesh>().text = "Litros: " + Litros.ToString();
-        text3.GetComponent<TextMesh>().text = "Temperatura: " + Temperatura.ToString();
-        text4.GetComponent<TextMesh>().text = "DHARMA";*/
+
 
 
     }
