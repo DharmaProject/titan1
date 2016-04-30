@@ -13,7 +13,7 @@ public class pulse : MonoBehaviour
 	private int frameCounter = 0;	
 	private float delay = 0.04f;
 	private float pulse_= 0f;
-	private int t=85;
+	private int t=0;
 	private float a=1; //alpha control
 	void Awake()
 	{
@@ -38,15 +38,17 @@ public class pulse : MonoBehaviour
 	}
 
 	void Update ()
-	{t++;
+	{
+        t++;
 		
 		if (a!=sliders.opacity){
 			a= sliders.opacity;
-this.GetComponent<Renderer>().material.color = new Color(this.GetComponent<Renderer>().material.color.r,this.GetComponent<Renderer>().material.color.b,this.GetComponent<Renderer>().material.color.g,.65f*a);
+            this.GetComponent<Renderer>().material.color = new Color(this.GetComponent<Renderer>().material.color.r,this.GetComponent<Renderer>().material.color.b,this.GetComponent<Renderer>().material.color.g,.65f*a);
 		}
 		if (t>10){
 			t=0;
-		pulse_=Mathf.Round((165f-health.health_/1.25f)+Random.Range(-3f,3f));
+            //pulse_=Mathf.Round((165f-health.health_/1.25f)+Random.Range(-3f,3f));
+            pulse_ = 0;
 		}
 		this.transform.Find("p_text").GetComponent<TextMesh>().text=pulse_.ToString();
 		delay = .015f+health.health_/4000f;

@@ -6,7 +6,7 @@ using Vuforia;
 
 public class titan1 : MonoBehaviour {
 
-    SerialPort miPuerto = new SerialPort("COM8", 9600);
+    //SerialPort miPuerto;
     string[] botones;
     int[] valor;
     public GameObject[] boton;
@@ -23,9 +23,10 @@ public class titan1 : MonoBehaviour {
     // Use this for initialization
     void Start()
     {
-        miPuerto.Open();
+       // miPuerto = new SerialPort("COM8" , 9600);
+        //miPuerto.Open();
         tierra.gameObject.SetActive(false);
-        valor = new int[5];
+        //valor = new int[5];
 
 
     }
@@ -34,14 +35,14 @@ public class titan1 : MonoBehaviour {
     void Update()
     {
 
-        string valores = miPuerto.ReadLine();
-        botones = valores.Split(',');
-       
+        //string valores = miPuerto.ReadLine();
+        //botones = valores.Split(',');
+       /*
         
         for (int i = 0; i < botones.Length; i++)
         {
-           valor[i] = int.Parse(botones[i].ToString());
-            Debug.Log(valor[4]);
+           //valor[i] = int.Parse(botones[i].ToString());
+            Debug.Log(valor[i]);
             
             if (valor[0] < 160)
             {
@@ -101,17 +102,17 @@ public class titan1 : MonoBehaviour {
                 title.GetComponent<TextMesh>().text = "Biometrics";
                 //temperatura.GetComponent<TextMesh>().text = "Temperatura: " + valor[6].ToString();
             }
-
-        }
+            
+        }*/
 
 
 
     }
 
 
-
+    /*
     float Map(float value, float fromSource, float toSource, float fromTarget, float toTarget)
     {
         return (value - fromSource) / (toSource - fromSource) * (toTarget - fromTarget) + fromTarget;
-    }
+    }*/
 }
