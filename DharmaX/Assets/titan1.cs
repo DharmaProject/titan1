@@ -3,12 +3,19 @@ using System.Collections;
 using System.IO.Ports;
 using UnityEngine.UI;
 using Vuforia;
+using System;
+using System.Threading;
 
 public class titan1 : MonoBehaviour {
 
+<<<<<<< HEAD
     SerialPort miPuerto = new SerialPort("COM3", 9600);
     string[] botones;
     int[] valor;
+=======
+    SerialPort sp;
+   
+>>>>>>> 251ddb00986775f13f55ab163e9e35ca352bd26b
     public GameObject[] boton;
     public GameObject[] planetas;
     public float speed;
@@ -35,6 +42,7 @@ public class titan1 : MonoBehaviour {
    
     public Transform temperatura;
     public Transform title;
+<<<<<<< HEAD
     public Transform nombresPlanetas;
     public GameObject fondoNombresPlanetas;
     public Transform atmosfera;
@@ -44,12 +52,25 @@ public class titan1 : MonoBehaviour {
     public Transform nucleo;
     public Transform textoNucleo;
     public Transform fondoInfoPlanetas;
+=======
+    string valor;
+    pulse pulso;
+    
+    string pls;
+>>>>>>> 251ddb00986775f13f55ab163e9e35ca352bd26b
 
+    int totalLitros = 7;
+    float litrosLeft = 0;
+    public float porcentaje = 0;
+    public TextMesh txtM;
+    public static string x;
+    public static string[] data;
 
 
     // Use this for initialization
     void Start()
     {
+<<<<<<< HEAD
         miPuerto.Open();
         nombresPlanetas.gameObject.SetActive(false);
         fondoNombresPlanetas.gameObject.SetActive(false);
@@ -69,13 +90,23 @@ public class titan1 : MonoBehaviour {
         }
             valor = new int[5];
 
+=======
+        OpenConnection();
+>>>>>>> 251ddb00986775f13f55ab163e9e35ca352bd26b
 
     }
 
     // Update is called once per frame
-    void Update()
-    {
+    void Update() {
+        x = sp.ReadLine();
+        sp.ReadTimeout = 25;
+        data = x.Split(' ');
 
+        Debug.Log("valoooooor: " + data[0]);
+        txtM.text = data[0];
+    }
+
+<<<<<<< HEAD
         string valores = miPuerto.ReadLine();
         
         botones = valores.Split(',');
@@ -332,5 +363,50 @@ public class titan1 : MonoBehaviour {
     float Map(float value, float fromSource, float toSource, float fromTarget, float toTarget)
     {
         return (value - fromSource) / (toSource - fromSource) * (toTarget - fromTarget) + fromTarget;
+=======
+    
+    public void OpenConnection()
+    {
+        sp = new SerialPort("COM8", 9600, Parity.None, 8, StopBits.One);
+        Debug.Log("OpenConnection started");
+        if (sp != null)
+        {
+            if (sp.IsOpen)
+            {
+                sp.Close();
+                Debug.Log("Closing port, because it was already open!");
+            }
+            else
+            {
+                sp.Open();  // opens the connection
+                            // sets the timeout value before reporting error
+                Debug.Log("Port Opened!");
+            }
+        }
+        else
+        {
+            if (sp.IsOpen)
+            {
+                print("Port is already open");
+            }
+            else
+            {
+                print("Port == null");
+            }
+        }
+        Debug.Log("Open Connection finished running");
     }
+
+
+    float getPercentage(float litrosRestantes) {
+        float porcentajeLitros = 100;
+        float porcentajeLeft = 0;
+
+        porcentajeLeft = (litrosRestantes * porcentajeLitros) / totalLitros;
+
+        return porcentajeLeft;
+>>>>>>> 251ddb00986775f13f55ab163e9e35ca352bd26b
+    }
+   
+
 }

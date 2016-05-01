@@ -6,7 +6,7 @@ public class grid : MonoBehaviour {
 	private GameObject m_cam;
 	// Use this for initialization
 	void Start () {
-	m_cam = GameObject.Find("Main Camera");
+	m_cam = GameObject.Find("ARCamera");
 	}
 	
 	// Update is called once per frame
