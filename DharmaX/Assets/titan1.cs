@@ -5,8 +5,8 @@ using UnityEngine.UI;
 using Vuforia;
 
 public class titan1 : MonoBehaviour {
-
-    SerialPort miPuerto = new SerialPort("COM8", 9600);
+    PlayMusic playMusic;
+    SerialPort miPuerto = new SerialPort("COM4", 9600);
     string[] botones;
     int[] valor;
     public GameObject[] boton;
@@ -18,32 +18,28 @@ public class titan1 : MonoBehaviour {
     public Transform temperatura;
     public Transform title;
 
-
-
     // Use this for initialization
     void Start()
     {
         miPuerto.Open();
         tierra.gameObject.SetActive(false);
-        valor = new int[5];
-
-
     }
 
     // Update is called once per frame
     void Update()
     {
+        
+       
 
         string valores = miPuerto.ReadLine();
         botones = valores.Split(',');
-       
-        
+
         for (int i = 0; i < botones.Length; i++)
         {
            valor[i] = int.Parse(botones[i].ToString());
             Debug.Log(valor[4]);
             
-            if (valor[0] < 160)
+            if (valor[0]<160)
             {
                 color[0].material.SetColor("_Color", Color.green);
                 color[1].material.SetColor("_Color", Color.white);
@@ -54,6 +50,7 @@ public class titan1 : MonoBehaviour {
                 tierra.transform.Rotate(Vector3.up * Time.deltaTime);
                 tierra.transform.Rotate(Vector3.left * Time.deltaTime);
                 title.GetComponent<TextMesh>().text = "Space GPS";
+
             } else if(valor[1]<160)
             {
                color[1].material.SetColor("_Color", Color.green);

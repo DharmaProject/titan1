@@ -70,6 +70,7 @@
     <Compile Include="Assets\Earth\Scripts\EarthScript.cs" />
     <Compile Include="Assets\Earth\Scripts\MoveScript.cs" />
     <Compile Include="Assets\Earth\Scripts\SphereScript.cs" />
+    <Compile Include="Assets\PlayMusic.cs" />
     <Compile Include="Assets\Resources\Holographic\Scripts\PanWM.cs" />
     <Compile Include="Assets\Resources\Holographic\Scripts\aim_movement.cs" />
     <Compile Include="Assets\Resources\Holographic\Scripts\armor.cs" />
@@ -77,6 +78,8 @@
     <Compile Include="Assets\Resources\Holographic\Scripts\grid.cs" />
     <Compile Include="Assets\Resources\Holographic\Scripts\health.cs" />
     <Compile Include="Assets\Resources\Holographic\Scripts\pulse.cs" />
+    <Compile Include="Assets\Resources\Holographic\Scripts\pulse1.cs" />
+    <Compile Include="Assets\Resources\Holographic\Scripts\pulse2.cs" />
     <Compile Include="Assets\Resources\Holographic\Scripts\pulse_rotation.cs" />
     <Compile Include="Assets\Resources\Holographic\Scripts\roboGui.cs" />
     <Compile Include="Assets\Resources\Holographic\Scripts\sliders.cs" />
