@@ -8,6 +8,7 @@ public class titan1 : MonoBehaviour {
     AudioSource audio;
     public AudioClip[] audios;
     public Renderer[] musicButtons;
+    public TextMesh[] canciones;
 
     SerialPort miPuerto = new SerialPort("COM4", 9600);
     string[] botones;
@@ -155,7 +156,9 @@ public class titan1 : MonoBehaviour {
             else {
                 audio.clip = audios[index];
                 audio.Play();
+                canciones[index].GetComponent<MeshRenderer>().material.SetColor("_Color", Color.red);
                 index++;
+                
                 musicButtons[1].gameObject.SetActive(false);
                 yield return new WaitForSeconds(0.5f);
                 musicButtons[1].gameObject.SetActive(true);
