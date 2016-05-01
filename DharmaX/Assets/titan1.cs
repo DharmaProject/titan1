@@ -5,13 +5,18 @@ using UnityEngine.UI;
 using Vuforia;
 
 public class titan1 : MonoBehaviour {
-    PlayMusic playMusic;
+    AudioSource audio;
+    public AudioClip[] audios;
+    public Renderer[] musicButtons;
+
     SerialPort miPuerto = new SerialPort("COM4", 9600);
     string[] botones;
     int[] valor;
     public GameObject[] boton;
     public GameObject tierra;
     public Renderer[] color ;
+
+    
     string dharma;
     //public Transform text;
    
@@ -23,14 +28,22 @@ public class titan1 : MonoBehaviour {
     {
         miPuerto.Open();
         tierra.gameObject.SetActive(false);
+        
+        
+    }
+
+    void Awake()
+    {
+        audio = GetComponent<AudioSource>();
+        musicButtons[0].gameObject.SetActive(false);
     }
 
     // Update is called once per frame
     void Update()
     {
-        
-       
 
+        StartCoroutine(Music());
+        
         string valores = miPuerto.ReadLine();
         botones = valores.Split(',');
 
@@ -59,6 +72,7 @@ public class titan1 : MonoBehaviour {
                 color[3].material.SetColor("_Color", Color.white);
                 color[4].material.SetColor("_Color", Color.white);
                 title.GetComponent<TextMesh>().text = "Mission Control";
+
             }
               else if (valor[2] < 160)
             {
@@ -100,9 +114,6 @@ public class titan1 : MonoBehaviour {
             }
 
         }
-
-
-
     }
 
 
@@ -111,4 +122,47 @@ public class titan1 : MonoBehaviour {
     {
         return (value - fromSource) / (toSource - fromSource) * (toTarget - fromTarget) + fromTarget;
     }
+
+
+    int index = 0;
+    IEnumerator Music()
+    {
+        //anterior
+        if (Input.GetKey(KeyCode.P))
+        {
+            if (index < audios.Length)
+            {
+                yield break;
+            }
+            else {
+                index--;
+                audio.clip = audios[index];
+                audio.Play();
+                musicButtons[0].gameObject.SetActive(false);
+                yield return new WaitForSeconds(0.5f);
+                musicButtons[0].gameObject.SetActive(true);
+            }
+        }
+        
+        //siguiente
+        if(Input.GetKey(KeyCode.C))
+        {
+            musicButtons[0].gameObject.SetActive(true);
+            if (index > audios.Length)
+            {
+                yield break;             
+            }
+            else {
+                audio.clip = audios[index];
+                audio.Play();
+                index++;
+                musicButtons[1].gameObject.SetActive(false);
+                yield return new WaitForSeconds(0.5f);
+                musicButtons[1].gameObject.SetActive(true);
+                
+            }
+        }
+        
+    }
+
 }

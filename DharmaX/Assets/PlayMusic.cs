@@ -7,29 +7,33 @@ public class PlayMusic : MonoBehaviour {
     
     public Renderer right;
     
-    void Start() {
+    void Awake()
+    {
         audio = GetComponent<AudioSource>();
+        Music();
     }
 	
 	// Update is called once per frame
-	void Update () {
-       
+	public void Update () {
+        Awake();
     }
 
-    public void Music()
+   public void Music()
     {
         StartCoroutine(CoMusic());
     }
 
-    public IEnumerator CoMusic()
+
+    IEnumerator CoMusic()
     {
+
         
             audio.clip = audios[0];
             audio.Play();
             right.gameObject.SetActive(false);
             yield return new WaitForSeconds(0.5f);
             right.gameObject.SetActive(true);
-        
     }
+    
     
 }
