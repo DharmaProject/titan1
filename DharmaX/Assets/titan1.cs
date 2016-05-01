@@ -3,12 +3,13 @@ using System.Collections;
 using System.IO.Ports;
 using UnityEngine.UI;
 using Vuforia;
+using System;
+using System.Threading;
 
 public class titan1 : MonoBehaviour {
 
-    //SerialPort miPuerto;
-    string[] botones;
-    int[] valor;
+    SerialPort sp;
+   
     public GameObject[] boton;
     public GameObject tierra;
     public Renderer[] color ;
@@ -17,102 +18,78 @@ public class titan1 : MonoBehaviour {
    
     public Transform temperatura;
     public Transform title;
+    string valor;
+    pulse pulso;
+    
+    string pls;
 
+    int totalLitros = 7;
+    float litrosLeft = 0;
+    public float porcentaje = 0;
+    public TextMesh txtM;
+    public static string x;
+    public static string[] data;
 
 
     // Use this for initialization
     void Start()
     {
-       // miPuerto = new SerialPort("COM8" , 9600);
-        //miPuerto.Open();
-        tierra.gameObject.SetActive(false);
-        //valor = new int[5];
-
+        OpenConnection();
 
     }
 
     // Update is called once per frame
-    void Update()
+    void Update() {
+        x = sp.ReadLine();
+        sp.ReadTimeout = 25;
+        data = x.Split(' ');
+
+        Debug.Log("valoooooor: " + data[0]);
+        txtM.text = data[0];
+    }
+
+    
+    public void OpenConnection()
     {
-
-        //string valores = miPuerto.ReadLine();
-        //botones = valores.Split(',');
-       /*
-        
-        for (int i = 0; i < botones.Length; i++)
+        sp = new SerialPort("COM8", 9600, Parity.None, 8, StopBits.One);
+        Debug.Log("OpenConnection started");
+        if (sp != null)
         {
-           //valor[i] = int.Parse(botones[i].ToString());
-            Debug.Log(valor[i]);
-            
-            if (valor[0] < 160)
+            if (sp.IsOpen)
             {
-                color[0].material.SetColor("_Color", Color.green);
-                color[1].material.SetColor("_Color", Color.white);
-                color[2].material.SetColor("_Color", Color.white);
-                color[3].material.SetColor("_Color", Color.white);
-                color[4].material.SetColor("_Color", Color.white);
-                tierra.gameObject.SetActive(true);
-                tierra.transform.Rotate(Vector3.up * Time.deltaTime);
-                tierra.transform.Rotate(Vector3.left * Time.deltaTime);
-                title.GetComponent<TextMesh>().text = "Space GPS";
-            } else if(valor[1]<160)
-            {
-               color[1].material.SetColor("_Color", Color.green);
-                color[0].material.SetColor("_Color", Color.white);
-                color[2].material.SetColor("_Color", Color.white);
-                color[3].material.SetColor("_Color", Color.white);
-                color[4].material.SetColor("_Color", Color.white);
-                title.GetComponent<TextMesh>().text = "Mission Control";
+                sp.Close();
+                Debug.Log("Closing port, because it was already open!");
             }
-              else if (valor[2] < 160)
+            else
             {
-                color[1].material.SetColor("_Color", Color.white);
-                color[0].material.SetColor("_Color", Color.white);
-                color[2].material.SetColor("_Color", Color.green);
-                color[3].material.SetColor("_Color", Color.white);
-                color[4].material.SetColor("_Color", Color.white);
-                title.GetComponent<TextMesh>().text = "Arm Robot";
+                sp.Open();  // opens the connection
+                            // sets the timeout value before reporting error
+                Debug.Log("Port Opened!");
             }
-              else if (valor[3] < 160)
+        }
+        else
+        {
+            if (sp.IsOpen)
             {
-                color[1].material.SetColor("_Color", Color.white);
-                color[0].material.SetColor("_Color", Color.white);
-                color[2].material.SetColor("_Color", Color.white);
-                color[3].material.SetColor("_Color", Color.green);
-                color[4].material.SetColor("_Color", Color.white);
-                title.GetComponent<TextMesh>().text = "Compound Analyzer";
+                print("Port is already open");
             }
-            else if (valor[4] < 160)
+            else
             {
-                color[1].material.SetColor("_Color", Color.white);
-                color[0].material.SetColor("_Color", Color.white);
-                color[2].material.SetColor("_Color", Color.white);
-                color[3].material.SetColor("_Color", Color.white);
-                color[4].material.SetColor("_Color", Color.green);
-                title.GetComponent<TextMesh>().text = "Music Player";
+                print("Port == null");
             }
-            else 
-            {
-                color[1].material.SetColor("_Color", Color.white);
-                color[0].material.SetColor("_Color", Color.white);
-                color[2].material.SetColor("_Color", Color.white);
-                color[3].material.SetColor("_Color", Color.white);
-                color[4].material.SetColor("_Color", Color.white);
-                tierra.gameObject.SetActive(false);
-                title.GetComponent<TextMesh>().text = "Biometrics";
-                //temperatura.GetComponent<TextMesh>().text = "Temperatura: " + valor[6].ToString();
-            }
-            
-        }*/
-
-
-
+        }
+        Debug.Log("Open Connection finished running");
     }
 
 
-    /*
-    float Map(float value, float fromSource, float toSource, float fromTarget, float toTarget)
-    {
-        return (value - fromSource) / (toSource - fromSource) * (toTarget - fromTarget) + fromTarget;
-    }*/
+    float getPercentage(float litrosRestantes) {
+        float porcentajeLitros = 100;
+        float porcentajeLeft = 0;
+
+        porcentajeLeft = (litrosRestantes * porcentajeLitros) / totalLitros;
+
+        return porcentajeLeft;
+    }
+   
+
 }
