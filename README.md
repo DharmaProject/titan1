@@ -11,7 +11,7 @@ Our wearable will also have a bracelet that will be the astronaut command center
 Here are some mock ups of the helmet
 
 ![biometrics screen] (https://raw.githubusercontent.com/DharmaProject/titan1/master/20160423_170224-Recuperado-Recuperado.png)
-
+![biometrics screen](https://raw.githubusercontent.com/DharmaProject/titan1/master/20160423_170229-Recuperado.png)
 
 In the home screen the astronaut will be able to check his biometrics:  Amount of Oxygen, suit temperature, outside temperature, magnetic fields, battery life, heart beat amongst other. He will also be able to see a picture ID
 
