@@ -36,6 +36,7 @@ MUSIC PLAYER
 
 For those stressful mission, there is nothing better than a smooth jazz or for those intense activities some Iron Maiden. That is why we have included a music player.
 
+![Compound Analyzer](https://raw.githubusercontent.com/DharmaProject/titan1/master/Reproductor.png)
 System specs
 
 Unity 3D
