@@ -356,10 +356,7 @@ public class titan1 : MonoBehaviour {
     }
 
 
-    float Map(float value, float fromSource, float toSource, float fromTarget, float toTarget)
-    {
-        return (value - fromSource) / (toSource - fromSource) * (toTarget - fromTarget) + fromTarget;
-=======
+    
     
     public void OpenConnection()
     {
