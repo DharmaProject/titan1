@@ -3,17 +3,12 @@ using System.Collections;
 using System.IO.Ports;
 using UnityEngine.UI;
 using Vuforia;
-using System;
-using System.Threading;
 
 public class titan1 : MonoBehaviour {
 
-    SerialPort miPuerto = new SerialPort("COM3", 9600);
+    SerialPort miPuerto = new SerialPort("COM4", 9600);
     string[] botones;
     int[] valor;
-
-    SerialPort sp;
-
     public GameObject[] boton;
     public GameObject[] planetas;
     public float speed;
@@ -40,7 +35,6 @@ public class titan1 : MonoBehaviour {
    
     public Transform temperatura;
     public Transform title;
-
     public Transform nombresPlanetas;
     public GameObject fondoNombresPlanetas;
     public Transform atmosfera;
@@ -50,71 +44,71 @@ public class titan1 : MonoBehaviour {
     public Transform nucleo;
     public Transform textoNucleo;
     public Transform fondoInfoPlanetas;
-
-    string valor1;
-    pulse pulso;
-    
-    string pls;
-
-
-    int totalLitros = 7;
-    float litrosLeft = 0;
-    public float porcentaje = 0;
-    public TextMesh txtM;
-    public static string x;
-    public static string[] data;
+    public GameObject[] biometrics;
+    public Transform date;
+    public Transform Ambient;
+    public Transform battery;
+    public Transform magnetic;
+    public GameObject PhotoID;
+    public GameObject fondoPhotoID;
+    public GameObject fondoFecha;
+    public GameObject fondoAmbient;
+    public GameObject fondoMagnetic;
+    public GameObject fondoBateria;
 
 
     // Use this for initialization
     void Start()
     {
-
         miPuerto.Open();
-        nombresPlanetas.gameObject.SetActive(false);
-        fondoNombresPlanetas.gameObject.SetActive(false);
-        selector.gameObject.SetActive(false);
-        atmosfera.gameObject.SetActive(false);
-        textoAtmosfera.gameObject.SetActive(false);
-        diameter.gameObject.SetActive(false);
-        textoDiametro.gameObject.SetActive(false);
-        nucleo.gameObject.SetActive(false);
-        textoNucleo.gameObject.SetActive(false);
-        fondoInfoPlanetas.gameObject.SetActive(false);
-        for (int i = 0; i < planetas.Length; i++)
-        {
-            planetas[i].gameObject.SetActive(false);
-          
+         spaceGPSestado = false;
+         missionControlEstado = false;
+         compoundAnalyzerEstado = false;
+         ArmRobotEstado = false;
+         musicPlayerEstado = false;
+         biometricsEstado = true;
 
-        }
-            valor = new int[5];
+        // Biometrics initialization
+        date.gameObject.SetActive(true);
+        Ambient.gameObject.SetActive(true);
+        battery.gameObject.SetActive(true);
+        magnetic.gameObject.SetActive(true);
+        PhotoID.gameObject.SetActive(true);
+        fondoPhotoID.gameObject.SetActive(true);
+        fondoFecha.gameObject.SetActive(true);
+        fondoAmbient.gameObject.SetActive(true);
+        fondoMagnetic.gameObject.SetActive(true);
+        fondoBateria.gameObject.SetActive(true);
 
+        //Serial port values
+        valor = new int[5];
 
-        OpenConnection();
 
     }
 
     // Update is called once per frame
-    void Update() {
-        x = sp.ReadLine();
-        sp.ReadTimeout = 25;
-        data = x.Split(' ');
-
-        Debug.Log("valoooooor: " + data[0]);
-        txtM.text = data[0];
-    }
-
+    void Update()
+    {
+        //Receive data from Arduino
         string valores = miPuerto.ReadLine();
-        
         botones = valores.Split(',');
+        //Call all the functions, and display only the one in true
+        biometricsPanel();
         spaceGPS();
-     
-
+        missionContrtol();
+        /*
+        Debug.Log(valor[0]);
+        Debug.Log(valor[1]);
+        Debug.Log(valor[2]);
+        Debug.Log(valor[3]);
+        Debug.Log(valor[4]);*/
+        //Separate the values received from the arduino
         for (int i = 0; i < botones.Length; i++)
         {
             valor[i] = int.Parse(botones[i].ToString());
-            if (spaceGPSestado == false && missionControlEstado == false && ArmRobotEstado == false && compoundAnalyzerEstado == false && musicPlayerEstado == false)
+ 
+            if (spaceGPSestado == false && missionControlEstado == false && ArmRobotEstado == false && compoundAnalyzerEstado == false && musicPlayerEstado == false && biometricsEstado == true)
             {
-                biometricsEstado = true;
                  
                 if (valor[0] < 160)
                 {
@@ -123,46 +117,78 @@ public class titan1 : MonoBehaviour {
                     color[2].material.SetColor("_Color", Color.white);
                     color[3].material.SetColor("_Color", Color.white);
                     color[4].material.SetColor("_Color", Color.white);
-
-                    spaceGPSestado = true;
+                    /*
+                    spaceGPSestado = true; 
+                    missionControlEstado = false;
+                    compoundAnalyzerEstado = false;
+                    ArmRobotEstado = false;
+                    musicPlayerEstado = false;
                     biometricsEstado = false;
-
+                    */
                 }
-                else if (valor[1] < 160)
+                if (valor[1] < 100)
                 {
-                    color[1].material.SetColor("_Color", Color.green);
                     color[0].material.SetColor("_Color", Color.white);
+                    color[1].material.SetColor("_Color", Color.green);
                     color[2].material.SetColor("_Color", Color.white);
                     color[3].material.SetColor("_Color", Color.white);
                     color[4].material.SetColor("_Color", Color.white);
-                    title.GetComponent<TextMesh>().text = "Mission Control";
+                    /*
+                    spaceGPSestado = false;
+                    missionControlEstado = true;
+                    compoundAnalyzerEstado = false;
+                    ArmRobotEstado = false;
+                    musicPlayerEstado = false;
+                    biometricsEstado = false;*/
+  
+
                 }
-                else if (valor[2] < 160)
+                if (valor[2] < 100)
                 {
-                    color[1].material.SetColor("_Color", Color.white);
                     color[0].material.SetColor("_Color", Color.white);
+                    color[1].material.SetColor("_Color", Color.white);
                     color[2].material.SetColor("_Color", Color.green);
                     color[3].material.SetColor("_Color", Color.white);
                     color[4].material.SetColor("_Color", Color.white);
-                    title.GetComponent<TextMesh>().text = "Arm Robot";
+                    
+                    spaceGPSestado = false;
+                    missionControlEstado = false;
+                    ArmRobotEstado = true;
+                    compoundAnalyzerEstado = false;
+                    musicPlayerEstado = false;
+                    biometricsEstado = false;
+          
                 }
-                else if (valor[3] < 160)
+               if (valor[3] < 160)
                 {
                     color[1].material.SetColor("_Color", Color.white);
                     color[0].material.SetColor("_Color", Color.white);
                     color[2].material.SetColor("_Color", Color.white);
                     color[3].material.SetColor("_Color", Color.green);
                     color[4].material.SetColor("_Color", Color.white);
-                    title.GetComponent<TextMesh>().text = "Compound Analyzer";
+     /*
+                    spaceGPSestado = false;
+                    missionControlEstado = false;
+                    ArmRobotEstado = false;
+                    compoundAnalyzerEstado = true;
+                    musicPlayerEstado = false;
+                    biometricsEstado = false;*/
+
                 }
-                else if (valor[4] < 160)
+                if (valor[4] < 100)
                 {
                     color[1].material.SetColor("_Color", Color.white);
                     color[0].material.SetColor("_Color", Color.white);
                     color[2].material.SetColor("_Color", Color.white);
                     color[3].material.SetColor("_Color", Color.white);
                     color[4].material.SetColor("_Color", Color.green);
-                    title.GetComponent<TextMesh>().text = "Music Player";
+                    /*
+                    spaceGPSestado = false;
+                    missionControlEstado = false;
+                    ArmRobotEstado = false;
+                    compoundAnalyzerEstado = false;
+                    musicPlayerEstado = true;
+                    biometricsEstado = false;*/
                 }
                 else
                 {
@@ -172,6 +198,12 @@ public class titan1 : MonoBehaviour {
                     color[3].material.SetColor("_Color", Color.white);
                     color[4].material.SetColor("_Color", Color.white);
 
+                    spaceGPSestado = false;
+                    missionControlEstado = false;
+                    ArmRobotEstado = false;
+                    compoundAnalyzerEstado = false;
+                    musicPlayerEstado = false;
+                    biometricsEstado = true;
                     title.GetComponent<TextMesh>().text = "Biometrics";
                     //temperatura.GetComponent<TextMesh>().text = "Temperatura: " + valor[6].ToString();
                 }
@@ -184,14 +216,19 @@ public class titan1 : MonoBehaviour {
        
         if (spaceGPSestado == true)
         {
-            
+
+            // Planet animations
+            biometricsEstado = false;
             planetas[0].gameObject.SetActive(true);
             planetas[1].gameObject.SetActive(true);
             planetas[2].gameObject.SetActive(true);
             planetas[3].gameObject.SetActive(true);
             planetas[4].gameObject.SetActive(true);
+
+            //Planet Tag
             nombresPlanetas.gameObject.SetActive(true);
             fondoNombresPlanetas.gameObject.SetActive(true);
+            // Information about planets 
             atmosfera.gameObject.SetActive(true);
             textoAtmosfera.gameObject.SetActive(true);
             diameter.gameObject.SetActive(true);
@@ -200,6 +237,25 @@ public class titan1 : MonoBehaviour {
             textoNucleo.gameObject.SetActive(true);
             fondoInfoPlanetas.gameObject.SetActive(true);
 
+            //Shut down main screen
+            for(int i=0; i <biometrics.Length; i++)
+            {
+                biometrics[i].gameObject.SetActive(false);
+            }
+            date.gameObject.SetActive(false);
+            Ambient.gameObject.SetActive(false);
+            battery.gameObject.SetActive(false);
+            magnetic.gameObject.SetActive(false);
+            PhotoID.gameObject.SetActive(false);
+            fondoPhotoID.gameObject.SetActive(true);
+            fondoFecha.gameObject.SetActive(false);
+            fondoAmbient.gameObject.SetActive(false);
+            fondoMagnetic.gameObject.SetActive(false);
+            fondoBateria.gameObject.SetActive(false);
+            boton[3].gameObject.SetActive(false);
+            boton[4].gameObject.SetActive(false);
+
+            //Title screen
 
             title.GetComponent<TextMesh>().text = "Space GPS";
             color[0].material.SetColor("_Color", Color.white);
@@ -207,34 +263,14 @@ public class titan1 : MonoBehaviour {
             color[2].material.SetColor("_Color", Color.white);
             color[3].material.SetColor("_Color", Color.white);
             color[4].material.SetColor("_Color", Color.white);
+
+            //To rotate the planets
             for(int u=0; u <planetas.Length; u++)
             {
                 planetas[u].transform.Rotate(new Vector3(0.0f, 0.0f, speed) * Time.deltaTime);
             }
 
-            /*
-            posicionXselector = planetas[index].transform.position.x;
-            posicionYselector = planetas[index].transform.position.y;
-            posicionZselector = planetas[index].transform.position.z;
-            scaleXselector = planetas[index].transform.localScale.x + planetas[index].transform.localScale.x/2;
-            scaleYselector = planetas[index].transform.localScale.y + planetas[index].transform.localScale.y/2;
-            scaleZselector = planetas[index].transform.localScale.z + planetas[index].transform.localScale.z/2;
-          //  selector.transform.position = new Vector3(posicionXselector, posicionYselector, posicionZselector);
-           // selector.transform.localScale = new Vector3(scaleXselector, scaleYselector, scaleZselector);*/
-
-            if (valor[0] < 160)
-            {
-               
-                if (index == 0)
-                {
-                    index = 0;
-                } else
-                {
-                    index--;
-                }
-                //
-            }
-
+            //to iterate  through planets array
             switch(index)
             {
                 case 0:
@@ -250,8 +286,6 @@ public class titan1 : MonoBehaviour {
                     textoDiametro.GetComponent<TextMesh>().text = "4,879 km.";
                     nucleo.GetComponent<TextMesh>().text = "Core: ";
                     textoNucleo.GetComponent<TextMesh>().text = "3,600 km, mostly Iron.";
-
-
                     break;
                 case 1:
                     planetas[0].gameObject.SetActive(false);
@@ -311,10 +345,23 @@ public class titan1 : MonoBehaviour {
                     break;
             }
 
-            if(valor[1] <160 )
+            if (valor[0] < 160)
             {
-              
-                Debug.Log(index);
+
+                if (index == 0)
+                {
+                    index = 0;
+                }
+                else
+                {
+                    index--;
+                }
+                
+            }
+
+            if (valor[1] <160 )
+            {
+
                 if (index>=0 && index < planetas.Length-1)
                 {
                     index++;
@@ -326,83 +373,276 @@ public class titan1 : MonoBehaviour {
             }
             if(valor[2] < 160)
             {
-
-                planetas[0].gameObject.SetActive(false);
-                planetas[1].gameObject.SetActive(false);
-                planetas[2].gameObject.SetActive(false);
-                planetas[3].gameObject.SetActive(false);
-                planetas[4].gameObject.SetActive(false);
-                nombresPlanetas.gameObject.SetActive(false);
+                //To exit the space GPS screen
+                biometricsEstado = true;
                 spaceGPSestado = false;
                 missionControlEstado = false;
                 ArmRobotEstado = false;
                 compoundAnalyzerEstado = false;
                 musicPlayerEstado = false;
-                nombresPlanetas.gameObject.SetActive(false);
-                fondoNombresPlanetas.gameObject.SetActive(false);
-                atmosfera.gameObject.SetActive(false);
-                textoAtmosfera.gameObject.SetActive(false);
-                diameter.gameObject.SetActive(false);
-                textoDiametro.gameObject.SetActive(false);
-                nucleo.gameObject.SetActive(false);
-                textoNucleo.gameObject.SetActive(false);
-                fondoInfoPlanetas.gameObject.SetActive(false);
-                boton[3].gameObject.SetActive(true);
-                boton[4].gameObject.SetActive(true);
+
             }
+        } else
+        {
+            planetas[0].gameObject.SetActive(false);
+            planetas[1].gameObject.SetActive(false);
+            planetas[2].gameObject.SetActive(false);
+            planetas[3].gameObject.SetActive(false);
+            planetas[4].gameObject.SetActive(false);
+            nombresPlanetas.gameObject.SetActive(false);
+            
+            nombresPlanetas.gameObject.SetActive(false);
+            fondoNombresPlanetas.gameObject.SetActive(false);
+            atmosfera.gameObject.SetActive(false);
+            textoAtmosfera.gameObject.SetActive(false);
+            diameter.gameObject.SetActive(false);
+            textoDiametro.gameObject.SetActive(false);
+            nucleo.gameObject.SetActive(false);
+            textoNucleo.gameObject.SetActive(false);
+            fondoInfoPlanetas.gameObject.SetActive(false);
+            boton[3].gameObject.SetActive(true);
+            boton[4].gameObject.SetActive(true);
+
+  
         }
         return spaceGPSestado;
 
+    }
+
+    bool biometricsPanel()
+    {
+        if(biometricsEstado == true)
+        {
+            date.gameObject.SetActive(true);
+            Ambient.gameObject.SetActive(true);
+            battery.gameObject.SetActive(true);
+            magnetic.gameObject.SetActive(true);
+            PhotoID.gameObject.SetActive(true);
+            fondoPhotoID.gameObject.SetActive(true);
+            fondoFecha.gameObject.SetActive(true);
+            fondoAmbient.gameObject.SetActive(true);
+            fondoMagnetic.gameObject.SetActive(true);
+            fondoBateria.gameObject.SetActive(true);
+            for (int i = 0; i < biometrics.Length; i++)
+            {
+                biometrics[i].gameObject.SetActive(true);
+            }
+
+        } 
+        /*
+            date.gameObject.SetActive(false);
+            Ambient.gameObject.SetActive(false);
+            battery.gameObject.SetActive(false);
+            magnetic.gameObject.SetActive(false);
+            PhotoID.gameObject.SetActive(false);
+            fondoPhotoID.gameObject.SetActive(false);
+            fondoFecha.gameObject.SetActive(false);
+            fondoAmbient.gameObject.SetActive(false);
+            fondoMagnetic.gameObject.SetActive(false);
+            fondoBateria.gameObject.SetActive(false);
+            for (int i = 0; i < biometrics.Length; i++)
+            {
+                biometrics[i].gameObject.SetActive(false);
+            }*/
+        
+
+        return biometricsEstado;
+
+    }
+
+    bool missionContrtol()
+    {
+
+        if(missionControlEstado == true)
+        {
+            title.GetComponent<TextMesh>().text = "Mission Control";
+            color[1].material.SetColor("_Color", Color.white);
+            color[0].material.SetColor("_Color", Color.white);
+            color[2].material.SetColor("_Color", Color.white);
+            PhotoID.gameObject.SetActive(true);
+            fondoPhotoID.gameObject.SetActive(true);
+            boton[3].gameObject.SetActive(false);
+            boton[4].gameObject.SetActive(false);
+            Debug.Log(valor[1]);
+
+            if (valor[0] <160)
+            {
+                color[1].material.SetColor("_Color", Color.green);
+                color[0].material.SetColor("_Color", Color.white);
+                color[2].material.SetColor("_Color", Color.white);
+            }
+
+            if(valor[1]<160)
+            {
+                color[1].material.SetColor("_Color", Color.white);
+                color[0].material.SetColor("_Color", Color.green);
+                color[2].material.SetColor("_Color", Color.white);
+                Debug.Log(valor[1]);
+            }
+
+            if (valor[2] < 160)
+            {
+                biometricsEstado = true;
+                spaceGPSestado = false;
+                missionControlEstado = false;
+                ArmRobotEstado = false;
+                compoundAnalyzerEstado = false;
+                musicPlayerEstado = false;
+              }
+        } else
+        {
+            PhotoID.gameObject.SetActive(true);
+            fondoPhotoID.gameObject.SetActive(true);
+            boton[3].gameObject.SetActive(true);
+            boton[4].gameObject.SetActive(true);
+            missionControlEstado = false;
+        }
+
+        return missionControlEstado;
+    }
+
+    bool ArmRobotPanel()
+    {
+        if(ArmRobotEstado == true)
+        {
+            title.GetComponent<TextMesh>().text = "Tool box";
+            color[1].material.SetColor("_Color", Color.white);
+            color[0].material.SetColor("_Color", Color.white);
+            color[2].material.SetColor("_Color", Color.white);
+            PhotoID.gameObject.SetActive(true);
+            fondoPhotoID.gameObject.SetActive(true);
+            boton[3].gameObject.SetActive(false);
+            boton[4].gameObject.SetActive(false);
+
+            if (valor[0] < 160)
+            {
+                color[1].material.SetColor("_Color", Color.green);
+                color[0].material.SetColor("_Color", Color.white);
+                color[2].material.SetColor("_Color", Color.white);
+            }
+
+            if (valor[1] < 160)
+            {
+                color[1].material.SetColor("_Color", Color.white);
+                color[0].material.SetColor("_Color", Color.green);
+                color[2].material.SetColor("_Color", Color.white);
+            }
+
+            if (valor[2] < 160)
+            {
+                biometricsEstado = true;
+                spaceGPSestado = false;
+                missionControlEstado = false;
+                ArmRobotEstado = false;
+                compoundAnalyzerEstado = false;
+                musicPlayerEstado = false;
+            }
+        } else
+        {
+            PhotoID.gameObject.SetActive(true);
+            fondoPhotoID.gameObject.SetActive(true);
+            boton[3].gameObject.SetActive(true);
+            boton[4].gameObject.SetActive(true);
+        }
+        return ArmRobotEstado; 
+    }
+
+    bool compoundAnalyzerPanel ()
+    {
+        if(compoundAnalyzerEstado == true) {
+            title.GetComponent<TextMesh>().text = "Compound Analyzer";
+            color[1].material.SetColor("_Color", Color.white);
+            color[0].material.SetColor("_Color", Color.white);
+            color[2].material.SetColor("_Color", Color.white);
+            PhotoID.gameObject.SetActive(true);
+            fondoPhotoID.gameObject.SetActive(true);
+            boton[3].gameObject.SetActive(false);
+            boton[4].gameObject.SetActive(false);
+
+            if (valor[0] < 160)
+            {
+                color[1].material.SetColor("_Color", Color.green);
+                color[0].material.SetColor("_Color", Color.white);
+                color[2].material.SetColor("_Color", Color.white);
+            }
+
+            if (valor[1] < 160)
+            {
+                color[1].material.SetColor("_Color", Color.white);
+                color[0].material.SetColor("_Color", Color.green);
+                color[2].material.SetColor("_Color", Color.white);
+            }
+
+            if (valor[2] < 160)
+            {
+                biometricsEstado = true;
+                spaceGPSestado = false;
+                missionControlEstado = false;
+                ArmRobotEstado = false;
+                compoundAnalyzerEstado = false;
+                musicPlayerEstado = false;
+            }
+        } else
+        {
+            PhotoID.gameObject.SetActive(true);
+            fondoPhotoID.gameObject.SetActive(true);
+            boton[3].gameObject.SetActive(true);
+            boton[4].gameObject.SetActive(true);
+        }
+
+        return compoundAnalyzerEstado;
+    }
+
+    bool musicPlayerPanel()
+    {
+        if(musicPlayerEstado == true)
+        {
+            title.GetComponent<TextMesh>().text = "Music Player";
+            color[1].material.SetColor("_Color", Color.white);
+            color[0].material.SetColor("_Color", Color.white);
+            color[2].material.SetColor("_Color", Color.white);
+            PhotoID.gameObject.SetActive(true);
+            fondoPhotoID.gameObject.SetActive(true);
+            boton[3].gameObject.SetActive(false);
+            boton[4].gameObject.SetActive(false);
+
+            if (valor[0] < 160)
+            {
+                color[1].material.SetColor("_Color", Color.green);
+                color[0].material.SetColor("_Color", Color.white);
+                color[2].material.SetColor("_Color", Color.white);
+            }
+
+            if (valor[1] < 160)
+            {
+                color[1].material.SetColor("_Color", Color.white);
+                color[0].material.SetColor("_Color", Color.green);
+                color[2].material.SetColor("_Color", Color.white);
+            }
+
+            if (valor[2] < 160)
+            {
+                biometricsEstado = true;
+                spaceGPSestado = false;
+                missionControlEstado = false;
+                ArmRobotEstado = false;
+                compoundAnalyzerEstado = false;
+                musicPlayerEstado = false;
+            }
+        }
+        else
+        {
+            PhotoID.gameObject.SetActive(true);
+            fondoPhotoID.gameObject.SetActive(true);
+            boton[3].gameObject.SetActive(true);
+            boton[4].gameObject.SetActive(true);
+        }
+        return musicPlayerEstado;
     }
 
 
     float Map(float value, float fromSource, float toSource, float fromTarget, float toTarget)
     {
         return (value - fromSource) / (toSource - fromSource) * (toTarget - fromTarget) + fromTarget;
-=======
-    
-    public void OpenConnection()
-    {
-        sp = new SerialPort("COM8", 9600, Parity.None, 8, StopBits.One);
-        Debug.Log("OpenConnection started");
-        if (sp != null)
-        {
-            if (sp.IsOpen)
-            {
-                sp.Close();
-                Debug.Log("Closing port, because it was already open!");
-            }
-            else
-            {
-                sp.Open();  // opens the connection
-                            // sets the timeout value before reporting error
-                Debug.Log("Port Opened!");
-            }
-        }
-        else
-        {
-            if (sp.IsOpen)
-            {
-                print("Port is already open");
-            }
-            else
-            {
-                print("Port == null");
-            }
-        }
-        Debug.Log("Open Connection finished running");
     }
-
-
-    float getPercentage(float litrosRestantes) {
-        float porcentajeLitros = 100;
-        float porcentajeLeft = 0;
-
-        porcentajeLeft = (litrosRestantes * porcentajeLitros) / totalLitros;
-
-        return porcentajeLeft;
->>>>>>> 251ddb00986775f13f55ab163e9e35ca352bd26b
-    }
-   
-
 }

@@ -131,7 +131,6 @@
     <None Include="Assets\Resources\Holographic\Scripts\unlitAlpha.shader" />
     <None Include="Assets\Resources\Readme.txt" />
     <None Include="Assets\StreamingAssets\QCAR\Markers1.xml" />
-    <None Include="Assets\StreamingAssets\QCAR\Titan.xml" />
     <None Include="Assets\Vuforia\Editor\Scripts\Vuforia.UnityExtensions.Editor.XML" />
     <None Include="Assets\Vuforia\Editor\WebcamProfiles\profiles.xml" />
     <None Include="Assets\Vuforia\Scripts\Internal\Vuforia.UnityExtensions.XML" />

@@ -33,7 +33,7 @@ public class PanWM : MonoBehaviour
 		
 		mRot = Vector2.Lerp(mRot, new Vector2(x, y), delta * 5f);
 		mTrans.localRotation = mStart * Quaternion.Euler(-mRot.y * degrees.y, mRot.x * degrees.x, 0f);
-		//this.transform.eulerAngles = new Vector3(this.transform.eulerAngles.x,this.transform.eulerAngles.y,0f);
+		this.transform.eulerAngles = new Vector3(this.transform.eulerAngles.x,this.transform.eulerAngles.y,0f);
 		
 	}
 }
