@@ -8,6 +8,10 @@ Titan will be made of metal strip that will retract using two pancake motors att
 
 Our wearable will also have a bracelet that will be the astronaut command center. In there he will be able to access the Augmented reality features with the markers we have implemented. This markers will be associated with certain functionalities that will request data from 1 or many arduino boards.
 
+Here are some mock ups of the helmet
+
+![biometrics screen] (https://raw.githubusercontent.com/DharmaProject/titan1/master/20160423_170224-Recuperado-Recuperado.png)
+
 
 In the home screen the astronaut will be able to check his biometrics:  Amount of Oxygen, suit temperature, outside temperature, magnetic fields, battery life, heart beat amongst other. He will also be able to see a picture ID
 
