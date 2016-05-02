@@ -8,14 +8,12 @@ using System.Threading;
 
 public class titan1 : MonoBehaviour {
 
-<<<<<<< HEAD
     SerialPort miPuerto = new SerialPort("COM3", 9600);
     string[] botones;
     int[] valor;
-=======
+
     SerialPort sp;
-   
->>>>>>> 251ddb00986775f13f55ab163e9e35ca352bd26b
+
     public GameObject[] boton;
     public GameObject[] planetas;
     public float speed;
@@ -42,7 +40,7 @@ public class titan1 : MonoBehaviour {
    
     public Transform temperatura;
     public Transform title;
-<<<<<<< HEAD
+
     public Transform nombresPlanetas;
     public GameObject fondoNombresPlanetas;
     public Transform atmosfera;
@@ -52,12 +50,12 @@ public class titan1 : MonoBehaviour {
     public Transform nucleo;
     public Transform textoNucleo;
     public Transform fondoInfoPlanetas;
-=======
-    string valor;
+
+    string valor1;
     pulse pulso;
     
     string pls;
->>>>>>> 251ddb00986775f13f55ab163e9e35ca352bd26b
+
 
     int totalLitros = 7;
     float litrosLeft = 0;
@@ -70,7 +68,7 @@ public class titan1 : MonoBehaviour {
     // Use this for initialization
     void Start()
     {
-<<<<<<< HEAD
+
         miPuerto.Open();
         nombresPlanetas.gameObject.SetActive(false);
         fondoNombresPlanetas.gameObject.SetActive(false);
@@ -90,9 +88,8 @@ public class titan1 : MonoBehaviour {
         }
             valor = new int[5];
 
-=======
+
         OpenConnection();
->>>>>>> 251ddb00986775f13f55ab163e9e35ca352bd26b
 
     }
 
@@ -106,7 +103,6 @@ public class titan1 : MonoBehaviour {
         txtM.text = data[0];
     }
 
-<<<<<<< HEAD
         string valores = miPuerto.ReadLine();
         
         botones = valores.Split(',');
