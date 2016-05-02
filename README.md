@@ -35,4 +35,21 @@ MUSIC PLAYER
 
 For those stressful mission, there is nothing better than a smooth jazz or for those intense activities some Iron Maiden. That is why we have included a music player.
 
-n
+System specs
+
+Unity 3D
+Arduino IDE
+Vuforia library for Augmented reality
+
+Hardware 
+
+OLED screen
+UDOO x86 for running the app
+Arduino 101 or UNO to gather the information from the sensors
+HD cam to detect the markers
+TMP36 to sense the ambient temperature
+O2 sensor (In our protoype we used a flow meter)
+2 ultrabgright 5mm white LEDs
+1 10mm difussed RGB common Anode to have a visual indicator for the oxygen
+MPR121 12 key capacity sensor to use  multifunctional buttons
+
