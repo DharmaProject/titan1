@@ -11,7 +11,7 @@ Our wearable will also have a bracelet that will be the astronaut command center
 
 In the home screen the astronaut will be able to check his biometrics:  Amount of Oxygen, suit temperature, outside temperature, magnetic fields, battery life, heart beat amongst other. He will also be able to see a picture ID
 
-![ScreenShot](https://github.com/DharmaProject/titan1/biometrics screen.png)
+![ScreenShot](https://raw.github.com/DharmaProject/titan1/biometrics screen.png)
 
 Aside from that we have included 5 multi purpose buttons that will help the astronaut navigate through several tools and gadgets. The obes we have identified are:
 
