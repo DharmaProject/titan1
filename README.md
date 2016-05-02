@@ -31,7 +31,7 @@ In this menu a control will show up showing an arm that will be on the spaceship
 COMPOUND ANALYZER
 
 The suit will have a small device capable of analyzing some components t9 detect hazardous materials for the astronaut and display in a chart the concentration of each element included in the sample
-
+![Compound Analyzer](https://raw.githubusercontent.com/DharmaProject/titan1/master/Compound%20Analyzer.png)
 MUSIC PLAYER 
 
 For those stressful mission, there is nothing better than a smooth jazz or for those intense activities some Iron Maiden. That is why we have included a music player.
