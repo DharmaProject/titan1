@@ -59,3 +59,7 @@ O2 sensor (In our protoype we used a flow meter)
 1 10mm difussed RGB common Anode to have a visual indicator for the oxygen
 MPR121 12 key capacity sensor to use  multifunctional buttons
 
+Arduino Libraries
+
+MRP121 Test for capacity sensing
+
