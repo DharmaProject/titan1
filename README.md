@@ -22,7 +22,7 @@ MISSION CONTROL
 
 In this part the astronaut will be able to browse a database with relevant information for the mission such as manuals, guidelines, 3D models of machines, motors , etc 
 
- 
+ ![Mission Control] (https://raw.githubusercontent.com/DharmaProject/titan1/master/Mission%20Control.png)
 
 ROBOT ARM
 
