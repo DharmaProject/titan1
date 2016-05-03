@@ -75,7 +75,7 @@ void loop() {
   float voltage = 5.0 * tempC;
   float voltage /= 1024;
   float temperatureC = (voltage -0.5)*100;
-  ///Me falta una linea de código aquiiiiiiiiii
+
   if(millis() - tiempoAnterior > 1000){  
       tiempoAnterior = millis();
       pulsos_Acumulados += pulsos;
