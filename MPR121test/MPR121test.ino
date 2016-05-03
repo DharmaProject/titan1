@@ -30,12 +30,27 @@ int pot = A0;
 int sensorValue;
 int fade;
 int estado;
+float tempC;
+int tempPin = A1;
+
+const int sensor = 2;
+int litro_Hora;
+volatile int pulsos = 0;
+unsigned long tiempoAnterior = 0;
+unsigned long pulsos_Acumulados = 0;
+float litro;
+int vib = 11; //Vibrador
+int hackSensor = 1;
 
 void setup() {
 
   pinMode(led, OUTPUT);
   pinMode(pot, INPUT);
-  
+  pinMode(sensor, INPUT_PULLUP); //Caudalimetro conectado en el pin declarado anteriormente
+
+  interrupts();
+  attachInterrupt(digitalPinToInterrupt(sensor),flujo,RISING);
+  tiempoAnterior = millis();  
   while (!Serial);        // needed to keep leonardo/micro from starting too fast!
 
   Serial.begin(9600);
@@ -56,7 +71,36 @@ void loop() {
   currtouched = cap.touched();
 
   analogWrite(led,fade);
+  tempC = analogRead(tempPin); 
+  float voltage = 5.0 * tempC;
+  float voltage /= 1024;
 
+  ///Me falta una linea de código aquiiiiiiiiii
+  if(millis() - tiempoAnterior > 1000){  
+      tiempoAnterior = millis();
+      pulsos_Acumulados += pulsos;
+      litro_Hora = (pulsos * 60 / 7.5);
+      litro = pulsos_Acumulados * 1.0/450;
+      pulsos = 0;  
+      
+       for (uint8_t i=0; i<12; i++) {
+          Serial.print(litro);
+          Serial.print(",");
+          ///MAndar a imprimir aqui la variable que falta de la linea de codigo que falta
+          Serial.print(cap.filteredData(0));
+          Serial.print(",");
+          Serial.print(cap.filteredData(1));
+          Serial.print(",");
+          Serial.print(cap.filteredData(2));
+          Serial.print(",");
+          Serial.print(cap.filteredData(3));
+          Serial.print(",");
+          Serial.println(cap.filteredData(4));
+          delay(20);
+          Serial.flush();
+          
+        }
+  }
   if(sensorValue<550 && sensorValue >480){
       fade = fade - 50;
   } 
@@ -86,34 +130,7 @@ void loop() {
     digitalWrite(led,LOW);
     break;
  }
-  for (uint8_t i=0; i<12; i++) {
-    Serial.print(cap.filteredData(0));
-    Serial.print(",");
-    Serial.print(cap.filteredData(1));
-    Serial.print(",");
-    Serial.print(cap.filteredData(2));
-    Serial.print(",");
-    Serial.print(cap.filteredData(3));
-    Serial.print(",");
-    Serial.println(cap.filteredData(4));
-    delay(100);
-    Serial.flush();
-    // it if *is* touched and *wasnt* touched before, alert!
-    if ((currtouched & _BV(i)) && !(lasttouched & _BV(i)) ) {
-
-      if(i == 0 || i == 1 || i == 2 || i ==3 || i ==4) {
-              
-              if(cap.filteredData(0) < cap.baselineData(0) && cap.filteredData(1) < cap.baselineData(1)) {
-              Serial.print(i); 
-              Serial.println("Aja Click Izquierdo" );  
-              }
-      }
-    }
-    // if it *was* touched and now *isnt*, alert!
-    if (!(currtouched & _BV(i)) && (lasttouched & _BV(i)) ) {
-  // Serial.print(i); Serial.println(" released");
-    }
-  }
+ 
 
   // reset our state
   lasttouched = currtouched;
@@ -121,19 +138,10 @@ void loop() {
   // comment out this line for detailed data from the sensor!
   return;
   
-  // debugging info, what
-  Serial.print("\t\t\t\t\t\t\t\t\t\t\t\t\t 0x"); Serial.println(cap.touched(), HEX);
-  Serial.print("Filt: ");
-  for (uint8_t i=0; i<12; i++) {
-    Serial.print(cap.filteredData(i)); Serial.print("\t");
-  }
-  Serial.println();
-  Serial.print("Base: ");
-  for (uint8_t i=0; i<12; i++) {
-    Serial.print(cap.baselineData(i)); Serial.print("\t");
-  }
-  Serial.println();
   
-  // put a delay so it isn't overwhelming
-  delay(100);
+}
+
+void flujo()
+{
+  pulsos++;
 }
