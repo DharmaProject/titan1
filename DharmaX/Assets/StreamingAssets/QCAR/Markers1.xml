@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<QCARConfig xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="qcar_config.xsd">
+  <Tracking>
+    <ImageTarget name="hackaday" size="30.000000 25.005108" />
+    <ImageTarget name="images2" size="30.000000 30.000000" />
+    <ImageTarget name="rayo" size="30.000000 30.000000" />
+    <ImageTarget name="Mira" size="30.000000 30.000000" />
+    <ImageTarget name="Espiga" size="30.000000 30.000000" />
+    <ImageTarget name="foco" size="30.000000 30.000000" />
+    <ImageTarget name="Flor" size="30.000000 30.000000" />
+    <ImageTarget name="huella" size="30.000000 30.000000" />
+    <ImageTarget name="Corazon" size="30.000000 30.000000" />
+    <ImageTarget name="DHARMA_8bits_Escala_De_Grises2" size="30.000000 30.000000" />
+    <ImageTarget name="download" size="30.000000 21.044777" />
+    <ImageTarget name="armarker" size="30.000000 30.000000" />
+    <ImageTarget name="rocket_marker" size="30.000000 30.000000" />
+  </Tracking>
+</QCARConfig>
