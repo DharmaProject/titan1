@@ -1124,6 +1124,7 @@ public class UnitySerialPort : MonoBehaviour
     {
         if (biometricsEstado == true)
         {
+            title.GetComponent<TextMesh>().text = "Biometrics";
             date.gameObject.SetActive(true);
             Ambient.gameObject.SetActive(true);
             battery.gameObject.SetActive(true);

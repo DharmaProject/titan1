@@ -74,7 +74,7 @@ void loop() {
   tempC = analogRead(tempPin); 
   float voltage = 5.0 * tempC;
   float voltage /= 1024;
-
+  float temperatureC = (voltage -0.5)*100;
   ///Me falta una linea de código aquiiiiiiiiii
   if(millis() - tiempoAnterior > 1000){  
       tiempoAnterior = millis();
@@ -86,7 +86,7 @@ void loop() {
        for (uint8_t i=0; i<12; i++) {
           Serial.print(litro);
           Serial.print(",");
-          ///MAndar a imprimir aqui la variable que falta de la linea de codigo que falta
+          Serial.print(temperatureC);
           Serial.print(cap.filteredData(0));
           Serial.print(",");
           Serial.print(cap.filteredData(1));
